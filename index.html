@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arshil's Portfolio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            background-color: rgb(0, 0, 33);
+            color: white;
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        /* Navigation */
+        nav {
+            height: 60px;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            background-color: rgb(18, 18, 62);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+        }
+        
+        .left {
+            font-size: 1.5rem;
+            font-weight: 600;
+        }
+        
+        .right ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        .right ul li {
+            margin: 0 23px;
+            position: relative;
+        }
+        
+        .right ul li a {
+            text-decoration: none;
+            color: white;
+            transition: all 0.3s ease;
+        }
+        
+        .right ul li a:hover {
+            color: rgb(170, 107, 228);
+        }
+        
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: rgb(18, 18, 62);
+            min-width: 160px;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+            z-index: 1;
+            border-radius: 4px;
+            top: 100%;
+            left: 0;
+        }
+        
+        .dropdown-content a {
+            padding: 12px 16px;
+            display: block;
+        }
+        
+        .right ul li:hover .dropdown-content {
+            display: block;
+        }
+        
+        .menu-toggle {
+            display: none;
+            font-size: 24px;
+            cursor: pointer;
+        }
+        
+        /* Hero Section */
+        .firstSection {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            margin: 100px 0 50px;
+            padding: 0 50px;
+        }
+        
+        .leftsection {
+            font-size: 2.5rem;
+            width: 45%;
+        }
+        
+        .purple {
+            color: rgb(170, 107, 228);
+        }
+        
+        .btn {
+            margin-top: 30px;
+        }
+        
+        .btn button {
+            padding: 12px 24px;
+            background-color: #1e2167;
+            border: 2px solid white;
+            color: white;
+            border-radius: 6px;
+            font-size: 16px;
+            cursor: pointer;
+            margin-right: 15px;
+            transition: all 0.3s ease;
+        }
+        
+        .btn button:hover {
+            background-color: rgb(170, 107, 228);
+            border-color: rgb(170, 107, 228);
+            transform: translateY(-2px);
+        }
+        
+        .socialmedia {
+            margin-top: 30px;
+        }
+        
+        .socialmedia ul {
+            list-style: none;
+            display: flex;
+            gap: 20px;
+        }
+        
+        .socialmedia img {
+            width: 40px;
+            transition: transform 0.3s ease;
+        }
+        
+        .socialmedia img:hover {
+            transform: scale(1.1);
+        }
+        
+        .rightsection {
+            width: 45%;
+            display: flex;
+            justify-content: center;
+        }
+        
+        #aimg {
+            width: 300px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #44e0d3, #a96ce6, #ff007f);
+            box-shadow: 
+                0 0 20px 10px rgba(10, 73, 220, 0.715),
+                0 0 40px 20px rgba(61, 192, 236, 0.5),
+                0 0 60px 30px rgb(206, 153, 180);
+        }
+        
+        /* Work Experience Section */
+        .secondsection {
+            padding: 80px 50px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .text-gray {
+            color: gray;
+            font-size: 1.2rem;
+        }
+        
+        #pe {
+            font-size: 2rem;
+            margin: 20px 0 40px;
+        }
+        
+        .box {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+        
+        .verticle {
+            background-color: rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+            padding: 25px;
+            transition: transform 0.3s ease;
+        }
+        
+        .verticle:hover {
+            transform: translateY(-5px);
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+        
+        .image-top {
+            width: 40px;
+            margin-bottom: 20px;
+        }
+        
+        .vertical-title {
+            font-size: 1.2rem;
+            color: rgb(170, 107, 228);
+            margin-bottom: 15px;
+        }
+        
+        .vertical-desc {
+            color: #ccc;
+            line-height: 1.6;
+            font-size: 0.9rem;
+        }
+        
+        /* About Section */
+        .about_section {
+            padding: 80px 50px;
+            background-color: rgba(255, 255, 255, 0.02);
+        }
+        
+        .abt {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        
+        .abt h4 {
+            color: rgb(170, 107, 228);
+            margin-bottom: 15px;
+        }
+        
+        .abt h2 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+        }
+        
+        .abt p {
+            color: #ccc;
+            line-height: 1.8;
+        }
+        
+        /* Footer */
+        .footer {
+            background-color: #0e0e1a;
+            padding: 50px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+        }
+        
+        .footer h3, .footer h4 {
+            color: white;
+            margin-bottom: 20px;
+        }
+        
+        .footer p, .footer li {
+            color: gray;
+            line-height: 1.6;
+        }
+        
+        .footer ul {
+            list-style: none;
+        }
+        
+        .footer a {
+            color: gray;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        .footer a:hover {
+            color: rgb(170, 107, 228);
+        }
+        
+        .third ul li {
+            display: flex;
+            align-items: center;
+            margin: 10px 0;
+        }
+        
+        .third ul li img {
+            width: 20px;
+            margin-right: 10px;
+        }
+        
+        .te {
+            text-align: center;
+            padding: 20px;
+            background-color: #0e0e1a;
+            color: gray;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .menu-toggle {
+                display: block;
+            }
+        
+            .right ul {
+                display: none;
+                position: absolute;
+                top: 60px;
+                left: 0;
+                width: 100%;
+                background-color: rgb(18, 18, 62);
+                padding: 20px;
+                flex-direction: column;
+            }
+        
+            .right ul.show {
+                display: block;
+            }
+        
+            .right ul li {
+                margin: 15px 0;
+            }
+        
+            .dropdown-content {
+                position: static;
+                background-color: rgba(255, 255, 255, 0.05);
+                box-shadow: none;
+                margin-top: 10px;
+            }
+        
+            .firstSection {
+                flex-direction: column;
+                text-align: center;
+                margin-top: 80px;
+            }
+        
+            .leftsection, .rightsection {
+                width: 100%;
+                margin: 20px 0;
+            }
+        
+            .leftsection {
+                font-size: 2rem;
+            }
+        
+            .btn button {
+                margin: 10px;
+            }
+        
+            .socialmedia ul {
+                justify-content: center;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .leftsection {
+                font-size: 1.5rem;
+            }
+        
+            .btn button {
+                width: 100%;
+                margin: 10px 0;
+            }
+        
+            .footer {
+                padding: 30px 20px;
+            }
+        
+            .secondsection {
+                padding: 40px 20px;
+            }
+        
+            .about_section {
+                padding: 40px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="menu-toggle">☰</div>
+            <div class="left">Arshil's Portfolio</div>
+            <div class="right">
+                <ul>
+                    <li><a href="#firstSection">Home</a></li>
+                    <li>
+                        <a href="#about_section">About</a>
+                        <div class="dropdown-content">
+                            <a href="#skills">Skills</a>
+                            <a href="#education">Education</a>
+                            <a href="#interests">Interests</a>
+                        </div>
+                    </li>
+                    <li>
+                        <a href="#secondsection">Services</a>
+                        <div class="dropdown-content">
+                            <a href="#web-dev">Web Development</a>
+                            <a href="#app-dev">App Development</a>
+                            <a href="#design">Design</a>
+                        </div>
+                    </li>
+                    <li>
+                        <a href="#projects">Projects</a>
+                        <div class="dropdown-content">
+                            <a href="#websites">Websites</a>
+                            <a href="#applications">Applications</a>
+                            <a href="#games">Games</a>
+                        </div>
+                    </li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section id="firstSection" class="firstSection">
+            <div class="leftsection">
+                Hi, My name is <span class="purple">Arshil</span>
+                <div>and I am a passionate</div>
+                <span id="element"></span>
+                <div class="btn">
+                    <button class="res">Download Resume</button>
+                    <button class="ghub">Visit Github</button>
+                </div>
+
+                <div class="socialmedia">
+                    <ul>
+                        <li>
+                            <a href="https://www.instagram.com/iarsh_gour18/profilecard/?igsh=MWlkY3JlajJ2ejNuYw==" target="_blank">
+                                <img id="ins" src="instagram.png" alt="Instagram">
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://www.linkedin.com/in/arshil-gour-315564327" target="_blank">
+                                <img id="lin" src="linked.in.png" alt="LinkedIn">
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="rightsection">
+                <img id="aimg" src="Arsh.jpg" alt="Arshil's Photo">
+            </div>
+        </section>
+
+        <section id="secondsection" class="secondsection">
+            <span class="text-gray">What I have done so far</span>
+            <h1 id="pe">Work Experience</h1>
+
+            <div class="box">
+                <div class="verticle">
+                    <img class="image-top" src="javascript.png" alt="JavaScript">
+                    <div class="vertical-title">JavaScript Development</div>
+                    <div class="vertical-desc">
+                        Proficient in modern JavaScript development with expertise in ES6+ features, DOM manipulation, and async programming. Experience with popular frameworks and libraries for building interactive web applications.
+                    </div>
+                </div>
+                <div class="verticle">
+                    <img class="image-top" src="c++.png" alt="C++">
+                    <div class="vertical-title">C++ Development</div>
+                    <div class="vertical-desc">
+                        Strong foundation in C++ programming with focus on data structures, algorithms, and object-oriented design. Experience in developing efficient and scalable applications.
+                    </div>
+                </div>
+                <div class="verticle">
+                    <img class="image-top" src="python.png" alt="Python">
+                    <div class="vertical-title">Python Development</div>
+                    <div class="vertical-desc">
+                        Skilled in Python programming for automation, data analysis, and web development. Proficient with popular libraries and frameworks for building robust applications.
+                    </div>
+                </div>
+                <div class="verticle">
+                    <img class="image-top" src="html.png" alt="HTML">
+                    <div class="vertical-title">Frontend Development</div>
+                    <div class="vertical-desc">
+                        Expert in creating responsive and accessible web interfaces using HTML5, CSS3, and modern frontend technologies. Focus on performance and user experience.
+                    </div>
+                </div>
+                <div class="verticle">
+                    <img class="image-top" src="php.png" alt="PHP">
+                    <div class="vertical-title">PHP Development</div>
+                    <div class="vertical-desc">
+                        Experience in PHP development for dynamic web applications. Skilled in database integration, API development, and server-side programming.
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="about_section" class="about_section">
+            <div class="abt">
+                <h4>ABOUT ME</h4>
+                <h2>Here's A Little Bit About Myself</h2>
+                <p>
+                    In everything that I do, I make sure to put in hard work and perseverance into all aspects of my life. While also at the same time using tools that come from a diverse cultural background through traveling and learning multiple languages to create something clients love.
+                </p>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer">
+            <div class="first">
+                <h3>Arshil's Developer Portfolio</h3>
+                <p>THANK YOU FOR VISITING MY WEBSITE.<br>HOPE TO SEE YOU AGAIN!</p>
+            </div>
+            <div class="second">
+                <h3>Resources</h3>
+                <ul>
+                    <li><a href="#firstSection">Home</a></li>
+                    <li><a href="#about_section">About</a></li>
+                    <li><a href="#secondsection">Services</a></li>
+                    <li><a href="#projects">Projects</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </div>
+            <div id="contact" class="third">
+                <h4>CONTACT INFORMATION</h4>
+                <ul>
+                    <li><img id="dimg" src="dailer.png" alt="Phone">+91 7906995731</li>
+                    <li><img id="eimg" src="email.png" alt="Email">arshilg82@gmail.com</li>
+                </ul>
+            </div>
+        </div>
+        <div class="te">Copyright © www.arshilsportfolio.co | All rights reserved</div>
+    </footer>
+
+    <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
+    <script src="main.js"></script>
+
+
+    <script>
+        // Typed.js initialization
+var typed = new Typed('#element', {
+    strings: ['Web Developer', 'Graphic Designer', 'Gamer', 'Web Designer'],
+    typeSpeed: 70,
+    backSpeed: 50,
+    loop: true
+});
+
+// Mobile menu toggle
+document.querySelector('.menu-toggle').addEventListener('click', function() {
+    document.querySelector('.right ul').classList.toggle('show');
+});
+
+// Close mobile menu when clicking outside
+document.addEventListener('click', function(e) {
+    if (!e.target.closest('.right') && !e.target.closest('.menu-toggle')) {
+        document.querySelector('.right ul').classList.remove('show');
+    }
+});
+
+// Smooth scrolling for all navigation links
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+            target.scrollIntoView({
+                behavior: 'smooth'
+            });
+            // Close mobile menu after clicking a link
+            document.querySelector('.right ul').classList.remove('show');
+        }
+    });
+});
+
+// GitHub button click handler
+document.querySelector(".ghub").addEventListener("click", function() {
+    window.open("https://github.com/iarsh-gour18", "_blank");
+});
+
+// Resume download handler
+document.querySelector(".res").addEventListener("click", function() {
+    alert("Resume download functionality will be added soon!");
+});
+
+// Add scroll reveal animations
+window.addEventListener('scroll', reveal);
+
+function reveal() {
+    const reveals = document.querySelectorAll('.verticle');
+    
+    reveals.forEach(element => {
+        const windowHeight = window.innerHeight;
+        const elementTop = element.getBoundingClientRect().top;
+        const elementVisible = 150;
+        
+        if (elementTop < windowHeight - elementVisible) {
+            element.classList.add('active');
+        }
+    });
+}
+    </script>
+</body>
+</html>
